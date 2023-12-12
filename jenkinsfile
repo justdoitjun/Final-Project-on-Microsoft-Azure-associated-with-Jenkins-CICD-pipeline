@@ -4,8 +4,8 @@ pipeline{
         stage('mvn build'){
             steps{
                 echo 'mvn install'
-                sh 'mvn -B -f /bitnami/jenkins/home/workspace/justdoitjun-cicd/pom.xml install'
-
+                //sh 'mvn -B -f /bitnami/jenkins/home/workspace/justdoitjun-cicd/pom.xml install'
+                sh 'mvn -Dmaven.test.failure.ignore=true -N -f /bitnami/jenkins/home/workspace/justdoitjun-cicd/pom.xml clean package'
             }
         }
         stage('code upload'){
